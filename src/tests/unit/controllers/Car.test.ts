@@ -7,7 +7,7 @@ import CarService from '../../../services/Car';
 import { carMock, carMockWithId } from '../../mocks/carMock';
 
 
-describe('Frame Controller', () => {
+describe('Car Controller', () => {
   const carModel = new CarModel()
   const carService = new CarService(carModel);
   const carController = new CarController(carService);
