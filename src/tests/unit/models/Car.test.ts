@@ -46,13 +46,6 @@ describe('Car Model', () => {
 			expect(foundCar).to.be.deep.equal(carMockWithId);
 		});
 
-    it('car not found', async () => {
-      sinon.restore();
-      sinon.stub(Model, 'findOne').resolves(undefined);
-      const foundCar = await carModel.readOne('7add40c86762e0fb12000003');
-      expect(foundCar).to.be.undefined;
-		});
-
 		it('_id not found', async () => {
 			try {
 				await carModel.readOne('claudio');
@@ -66,13 +59,6 @@ describe('Car Model', () => {
 		it('successfully changed', async () => {
 			const changedCar = await carModel.update('4edd40c86762e0fb12000003', carMockForChange);
 			expect(changedCar).to.be.deep.equal(carMockForChangeWithId);
-		});
-
-    it('car not found', async () => {
-      sinon.restore();
-      sinon.stub(Model, 'findOne').resolves(null);
-      const foundCar = await carModel.readOne('7add40c86762e0fb12000003');
-      expect(foundCar).to.be.null;
 		});
 	
 		it('_id not found to change', async () => {
