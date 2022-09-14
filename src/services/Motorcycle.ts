@@ -6,7 +6,7 @@ import { ErrorTypes } from '../errors/catalog';
 class MotorcycleService implements IService<IMotorcycle> {
   constructor(private _motorcycle:IModel<IMotorcycle>) {}
 
-  public async create(obj:unknown): Promise<IMotorcycle & { _id: string }> {
+  public async create(obj:IMotorcycle): Promise<IMotorcycle & { _id: string }> {
     const parsed = MotorcycleZodSchema.safeParse(obj);
     if (!parsed.success) {
       throw parsed.error;
@@ -28,7 +28,7 @@ class MotorcycleService implements IService<IMotorcycle> {
     return motorcycle;
   }
 
-  public async update(_id: string, payload: unknown): 
+  public async update(_id: string, payload: IMotorcycle): 
   Promise<IMotorcycle & { _id: string; }> {
     const parsed = MotorcycleZodSchema.safeParse(payload);
     if (!parsed.success) {
