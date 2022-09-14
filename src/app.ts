@@ -5,7 +5,7 @@ import carsRoute from './routes/cars';
 
 const app = express();
 app.use(express.json());
-app.use(carsRoute);
+app.use('/cars', carsRoute);
 
 app.use(errorHandler);
 
