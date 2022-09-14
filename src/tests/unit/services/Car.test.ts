@@ -4,7 +4,7 @@ import { ZodError } from 'zod';
 import { ErrorTypes } from '../../../errors/catalog';
 import CarModel from '../../../models/Car';
 import CarService from '../../../services/Car';
-import { carMock, carMockWithId } from '../../mocks/carMock';
+import { carMock, carMockWithError, carMockWithId, carMockWithIdAndError } from '../../mocks/carMock';
 
 describe('Car Service', () => {
 	const carModel = new CarModel();
@@ -38,7 +38,7 @@ describe('Car Service', () => {
 
 		it('Failure', async () => {
 			try {
-				await carService.create({});
+				await carService.create(carMockWithError);
 			} catch (error: any) {
 			  expect(error).to.be.instanceOf(ZodError);
 			}
@@ -90,7 +90,7 @@ describe('Car Service', () => {
 
 		it('Failure - Zod Fails', async () => {
 			try {
-				await carService.update('any-id', {});
+				await carService.update('any-id', carMockWithIdAndError);
 			} catch(error: any) {
 			  expect(error).to.be.instanceOf(ZodError);
 			}
