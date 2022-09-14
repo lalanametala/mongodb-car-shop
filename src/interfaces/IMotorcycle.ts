@@ -13,4 +13,4 @@ const MotorcycleZodSchema = VehicleZodSchema.extend({
 
 type IMotorcycle = z.infer<typeof MotorcycleZodSchema>;
 
-export { MotorcycleZodSchema as CarZodSchema, IMotorcycle };
+export { MotorcycleZodSchema, IMotorcycle };
