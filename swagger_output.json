@@ -1,0 +1,652 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Car Shop API",
+    "description": "Vehicle shop management API",
+    "contact": {
+      "name": "Laís Nametala",
+      "url": "https://github.com/lalanametala"
+    },
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "cars",
+      "description": "Operations about cars"
+    },
+    {
+      "name": "motorcycles",
+      "description": "Operations about motorcycles"
+    }
+  ],
+  "paths": {
+    "/cars": {
+      "description": "Cars Resource",
+      "get": {
+        "tags": [
+          "cars"
+        ],
+        "description": "Operation to fetch all cars",
+        "responses": {
+          "200": {
+            "description": "Success Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "_id": {
+                        "type": "string",
+                        "example": "4edd40c86762e0fb12000003"
+                      },
+                      "model": {
+                        "type": "string",
+                        "example": "Ferrari Maranello"
+                      },
+                      "year": {
+                        "type": "integer",
+                        "example": 1963
+                      },
+                      "color": {
+                        "type": "string",
+                        "example": "red"
+                      },
+                      "buyValue": {
+                        "type": "integer",
+                        "example": 3500000
+                      },
+                      "seatsQty": {
+                        "type": "integer",
+                        "example": 2
+                      },
+                      "doorsQty": {
+                        "type": "integer",
+                        "example": 2
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "cars"
+        ],
+        "description": "Add a new car",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "example": "Ferrari Maranello"
+                  },
+                  "year": {
+                    "type": "integer",
+                    "example": 1963
+                  },
+                  "color": {
+                    "type": "string",
+                    "example": "red"
+                  },
+                  "buyValue": {
+                    "type": "integer",
+                    "example": 3500000
+                  },
+                  "seatsQty": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "doorsQty": {
+                    "type": "integer",
+                    "example": 2
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Record successfully added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": "4edd40c86762e0fb12000003"
+                    },
+                    "model": {
+                      "type": "string",
+                      "example": "Ferrari Maranello"
+                    },
+                    "year": {
+                      "type": "integer",
+                      "example": 1963
+                    },
+                    "color": {
+                      "type": "string",
+                      "example": "red"
+                    },
+                    "buyValue": {
+                      "type": "integer",
+                      "example": 3500000
+                    },
+                    "seatsQty": {
+                      "type": "integer",
+                      "example": 2
+                    },
+                    "doorsQty": {
+                      "type": "integer",
+                      "example": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cars/{id}": {
+      "description": "Operations in a single car",
+      "get": {
+        "tags": [
+          "cars"
+        ],
+        "description": "Operation to fetch one car by its id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of car to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": "4edd40c86762e0fb12000003"
+                    },
+                    "model": {
+                      "type": "string",
+                      "example": "Ferrari Maranello"
+                    },
+                    "year": {
+                      "type": "integer",
+                      "example": 1963
+                    },
+                    "color": {
+                      "type": "string",
+                      "example": "red"
+                    },
+                    "buyValue": {
+                      "type": "integer",
+                      "example": 3500000
+                    },
+                    "seatsQty": {
+                      "type": "integer",
+                      "example": 2
+                    },
+                    "doorsQty": {
+                      "type": "integer",
+                      "example": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "cars"
+        ],
+        "description": "Operation to update one car",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of car to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "example": "Ferrari Maranello"
+                  },
+                  "year": {
+                    "type": "integer",
+                    "example": 1963
+                  },
+                  "color": {
+                    "type": "string",
+                    "example": "red"
+                  },
+                  "buyValue": {
+                    "type": "integer",
+                    "example": 4500000
+                  },
+                  "seatsQty": {
+                    "type": "integer",
+                    "example": 2
+                  },
+                  "doorsQty": {
+                    "type": "integer",
+                    "example": 2
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Record successfully updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": "4edd40c86762e0fb12000003"
+                    },
+                    "model": {
+                      "type": "string",
+                      "example": "Ferrari Maranello"
+                    },
+                    "year": {
+                      "type": "integer",
+                      "example": 1963
+                    },
+                    "color": {
+                      "type": "string",
+                      "example": "red"
+                    },
+                    "buyValue": {
+                      "type": "integer",
+                      "example": 4500000
+                    },
+                    "seatsQty": {
+                      "type": "integer",
+                      "example": 2
+                    },
+                    "doorsQty": {
+                      "type": "integer",
+                      "example": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "cars"
+        ],
+        "description": "Operation to delete one car",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of car to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success Response"
+          }
+        }
+      }
+    },
+    "/motorcycles": {
+      "description": "Motorcycles Resource",
+      "get": {
+        "tags": [
+          "motorcycles"
+        ],
+        "description": "Operation to fetch all motorcycles",
+        "responses": {
+          "200": {
+            "description": "Success Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "properties": {
+                      "_id": {
+                        "type": "string",
+                        "example": "4edd40c86762e0fb12000003"
+                      },
+                      "model": {
+                        "type": "string",
+                        "example": "Honda CG Titan 125"
+                      },
+                      "year": {
+                        "type": "integer",
+                        "example": 1963
+                      },
+                      "color": {
+                        "type": "string",
+                        "example": "black"
+                      },
+                      "buyValue": {
+                        "type": "integer",
+                        "example": 3500
+                      },
+                      "category": {
+                        "type": "string",
+                        "example": "Street"
+                      },
+                      "engineCapacity": {
+                        "type": "integer",
+                        "example": 125
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "motorcycles"
+        ],
+        "description": "Add a new motorcycle",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "example": "Honda CG Titan 125"
+                  },
+                  "year": {
+                    "type": "integer",
+                    "example": 1963
+                  },
+                  "color": {
+                    "type": "string",
+                    "example": "black"
+                  },
+                  "buyValue": {
+                    "type": "integer",
+                    "example": 3500
+                  },
+                  "category": {
+                    "type": "string",
+                    "example": "Street"
+                  },
+                  "engineCapacity": {
+                    "type": "integer",
+                    "example": 125
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Record successfully added",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": "4edd40c86762e0fb12000003"
+                    },
+                    "model": {
+                      "type": "string",
+                      "example": "Honda CG Titan 125"
+                    },
+                    "year": {
+                      "type": "integer",
+                      "example": 1963
+                    },
+                    "color": {
+                      "type": "string",
+                      "example": "black"
+                    },
+                    "buyValue": {
+                      "type": "integer",
+                      "example": 3500
+                    },
+                    "category": {
+                      "type": "string",
+                      "example": "Street"
+                    },
+                    "engineCapacity": {
+                      "type": "integer",
+                      "example": 125
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/motorcycles/{id}": {
+      "description": "Operations in a single car",
+      "get": {
+        "tags": [
+          "motorcycles"
+        ],
+        "description": "Operation to fetch one motorcycle by its id",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of motorcycle to return",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": "4edd40c86762e0fb12000003"
+                    },
+                    "model": {
+                      "type": "string",
+                      "example": "Honda CG Titan 125"
+                    },
+                    "year": {
+                      "type": "integer",
+                      "example": 1963
+                    },
+                    "color": {
+                      "type": "string",
+                      "example": "black"
+                    },
+                    "buyValue": {
+                      "type": "integer",
+                      "example": 3500
+                    },
+                    "category": {
+                      "type": "string",
+                      "example": "Street"
+                    },
+                    "engineCapacity": {
+                      "type": "integer",
+                      "example": 125
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "motorcycles"
+        ],
+        "description": "Operation to update one motorcycle",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of motorcycle to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "model": {
+                    "type": "string",
+                    "example": "Honda CG Titan 125"
+                  },
+                  "year": {
+                    "type": "integer",
+                    "example": 1963
+                  },
+                  "color": {
+                    "type": "string",
+                    "example": "black"
+                  },
+                  "buyValue": {
+                    "type": "integer",
+                    "example": 4500
+                  },
+                  "category": {
+                    "type": "string",
+                    "example": "Street"
+                  },
+                  "engineCapacity": {
+                    "type": "integer",
+                    "example": 125
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Record successfully updated",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "_id": {
+                      "type": "string",
+                      "example": "4edd40c86762e0fb12000003"
+                    },
+                    "model": {
+                      "type": "string",
+                      "example": "Honda CG Titan 125"
+                    },
+                    "year": {
+                      "type": "integer",
+                      "example": 1963
+                    },
+                    "color": {
+                      "type": "string",
+                      "example": "black"
+                    },
+                    "buyValue": {
+                      "type": "integer",
+                      "example": 4500
+                    },
+                    "category": {
+                      "type": "string",
+                      "example": "Street"
+                    },
+                    "engineCapacity": {
+                      "type": "integer",
+                      "example": 125
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "motorcycles"
+        ],
+        "description": "Operation to delete one motorcycle",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of motorcycle to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success Response"
+          }
+        }
+      }
+    }
+  }
+}
